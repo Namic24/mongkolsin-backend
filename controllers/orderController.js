@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 //global variables
 const currency = 'thb'
-const deliveryCharge = 50
+const deliveryCharge = 1
 
 //gateway initialize
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
@@ -71,7 +71,7 @@ const placeOrderStripe = async (req, res) => {
                 product_data: {
                     name: item.name // เข้าถึงชื่อสินค้าจาก `item.name`
                 },
-                unit_amount: item.price * 100 // Stripe ใช้หน่วยที่เล็กที่สุด (เช่น เซ็นต์)
+                unit_amount: item.price *  // Stripe ใช้หน่วยที่เล็กที่สุด (เช่น เซ็นต์)
             },
             quantity: item.quantity
         }));
@@ -83,7 +83,7 @@ const placeOrderStripe = async (req, res) => {
                 product_data: {
                     name: 'Delivery Charges' // ค่าจัดส่ง
                 },
-                unit_amount: deliveryCharge * 100 // แปลงเป็นหน่วยที่เล็กที่สุด (เช่น เซ็นต์)
+                unit_amount: deliveryCharge * 1 // แปลงเป็นหน่วยที่เล็กที่สุด (เช่น เซ็นต์)
             },
             quantity: 1 // มีค่าจัดส่ง 1 รายการต่อการสั่งซื้อ
         });
